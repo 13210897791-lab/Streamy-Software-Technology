@@ -38,3 +38,29 @@ classDiagram
 
     %% Step 3: Aggregation (聚合，演员可脱离作品独立存在)
     Title o-- Actor
+```
+## Domain Model (UML Class Diagram)
+
+```mermaid
+---
+title: Streamy Domain Model
+---
+classDiagram
+    Title: \n\n
+    link Title "[https://example.com/titles](https://example.com/titles)" _blank
+    
+    %% Relationships with Multiplicity, Direction, and Labels
+    Title "1..*" -- "1..*" Genre: is associated with
+    Title "1" *-- "0..*" Season: has
+    Title "1" *-- "0..*" Review: has
+    Title "0..*" o-- "1..*" Actor: features
+    
+    %% Generalization / Inheritance
+    TVShow --> Title: implements
+    Short --> Title: implements
+    Film --> Title: implements
+    
+    Viewer "0..*" --> "0..*" Title: watches
+    Season "1" *-- "0..*" Review: has
+    Season "1" *-- "1..*" Episode: contains
+    Episode "1" *-- "0..*" Review: has
