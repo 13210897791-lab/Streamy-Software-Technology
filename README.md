@@ -23,3 +23,18 @@ flowchart TD
     LiveSandbox -- 2. Verified Block Migration --> LocalIDE
     LocalIDE -- 3. git add CLI Operations --> GitStage
     GitStage -- 4. git push Pipeline Push --> RemoteHub
+```
+## Domain Model (UML Class Diagram)
+
+```mermaid
+classDiagram
+    %% Step 1: Association (松散关联，无主从关系)
+    Title -- Genre
+
+    %% Step 2: Composition (强组合，父在左，子随父销毁)
+    Title *-- Season
+    Title *-- Review
+    Season *-- Episode
+
+    %% Step 3: Aggregation (聚合，演员可脱离作品独立存在)
+    Title o-- Actor
